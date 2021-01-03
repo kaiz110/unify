@@ -8,6 +8,7 @@ import {MaterialCommunityIcons,AntDesign} from '@expo/vector-icons';
 //screens
 import ApiScreen from "./src/screens/ApiScreen";
 import ComponentScreen from "./src/screens/ComponentScreen";
+import CounterScreen from "./src/screens/componentScreens/CounterScreen";
 
 const BottomTab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -34,6 +35,7 @@ const ComponentS = ()=>(
                 title: "Component"
             }}
         />
+        <Stack.Screen name="Counter" component={CounterScreen}/>
     </Stack.Navigator>
 )
 

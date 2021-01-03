@@ -1,9 +1,12 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Button} from 'react-native';
 
-const ComponentScreen = () => {
+const ComponentScreen = ({navigation}) => {
     return <View>
-        <Text>Component SCreen</Text>
+        <Button
+            title="counter"
+            onPress={()=>navigation.navigate('Counter')}
+        />
     </View>
 }
 

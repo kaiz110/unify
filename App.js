@@ -1,21 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+//
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const BottomTab = createMaterialBottomTabNavigator()
+const Stack = createStackNavigator()
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+//nested screens
+const ApiS = ()=>(
+    <Stack>
+        <Stack.Screen name="" component={} />
+    </Stack>
+)
+
+const ComponentS = ()=>(
+    <Stack>
+        <Stack.Screen name="" component={} />
+    </Stack>
+)
+
+const App = ()=> (
+    <BottomTab>
+        <BottomTab.Screen name="Api" component={ApiS}/>
+        <BottomTab.Screen name="Component" component={ComponentS}/>
+    </BottomTab>
+)
+
+export default App

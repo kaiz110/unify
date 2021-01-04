@@ -1,11 +1,15 @@
 import React,{useState} from 'react';
-import {StyleSheet, View} from 'react-native';
-import {TextInput,Button,Text,Paragraph} from 'react-native-paper';
+import {StyleSheet, View,KeyboardAvoidingView,Dimensions,Keyboard} from 'react-native';
+import {TextInput,Button,Text,Headline,Snackbar} from 'react-native-paper';
+import {LinearGradient} from 'expo-linear-gradient'
 import axios from 'axios';
 
+const SCREEN_HEIGHT = Dimensions.get('window').height
+
 const LoveCalcScreen = ()=>{
-    const [res,setRes] = useState({})
+    const [res,setRes] = useState(null)
     const [loading,setLoading] = useState(false)
+    const [snack,setSnack] = useState(false)
     const [name1,setName1] = useState('')
     const [name2,setName2] = useState('')
 
@@ -31,30 +35,89 @@ const LoveCalcScreen = ()=>{
         })
     }
 
-    return <View>
-        <Text>Love Calculator</Text>
-        <TextInput
-            label="Your First Name"
-            value={name1}
-            onChangeText={setName1}
-        />
-        <TextInput
-            label="His/Her First Name"
-            value={name2}
-            onChangeText={setName2}
-        />
-        <Button
-            loading={loading}
-            onPress={()=>send(name1,name2)}
-        > Submit </Button>
-        <Paragraph>{`Percentage: ${res.percentage}, ${res.result}`}</Paragraph>
+    return <View style={{flex: 1}}>
+        <KeyboardAvoidingView 
+            style={{flex: 1}} 
+            behavior="position" 
+            keyboardVerticalOffset={10}
+        >
+            <View style={styles.box}>
+                <LinearGradient
+                    colors={["rgba(255, 166, 166,0.90)", "transparent"]} 
+                    style={{flex: 1,alignItems:'center'}}
+                >
+                {res?
+                <View style={{alignItems: 'center'}}>
+                    <View style={styles.perc}>
+                        <Text style={styles.percText}>{res.percentage}%</Text>
+                    </View>
+                    <Headline style={styles.result}>{res.result}</Headline>
+                </View>
+                :null}
+                </LinearGradient>
+            </View>
+
+            <TextInput
+                style={styles.txtInput}
+                label="Your First Name"
+                value={name1}
+                onChangeText={setName1}
+            />
+            <TextInput
+                style={styles.txtInput}
+                label="His/Her First Name"
+                value={name2}
+                onChangeText={setName2}
+            />
+            
+            <Button
+                loading={loading}
+                onPress={()=>{
+                    Keyboard.dismiss()
+                    if(name1&&name2){
+                        send(name1,name2)
+                    }else{
+                        setSnack(true)
+                    }
+                }}
+            > Submit </Button>
+
+        </KeyboardAvoidingView>
+
+        <Snackbar
+            visible={snack}
+            onDismiss={()=>setSnack(false)}
+            duration={1000}
+            style={{flex: 1}}
+        > Error </Snackbar>
     </View>
 }
 
-function send(){
 
-}
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    box:{
+        borderRadius: 7,
+        margin : 15,
+        marginBottom: 45,
+        height: SCREEN_HEIGHT/3,
+        backgroundColor: 'red'
+    },
+    perc:{
+        flex:3,
+        justifyContent: 'center'
+    },
+    percText:{
+        fontSize: 78,
+        color: 'white'
+    },
+    result:{
+        flex:1,
+        color: 'white',
+        justifyContent: 'center'
+    },
+    txtInput: {
+        marginHorizontal: 7
+    }
+})
 
 export default LoveCalcScreen

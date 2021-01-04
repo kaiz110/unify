@@ -9,6 +9,12 @@ import {MaterialCommunityIcons,AntDesign} from '@expo/vector-icons';
 import ApiScreen from "./src/screens/ApiScreen";
 import ComponentScreen from "./src/screens/ComponentScreen";
 import CounterScreen from "./src/screens/componentScreens/CounterScreen";
+import RandomNumScreen from "./src/screens/componentScreens/RandomNumScreen";
+import RateScreen from "./src/screens/componentScreens/RateScreen";
+import RectangleScreen from "./src/screens/componentScreens/RectangleScreen";
+import SlideScreen from "./src/screens/componentScreens/SlideScreen";
+import TimerScreen from "./src/screens/componentScreens/TimerScreen";
+import LoveCalcScreen from "./src/screens/apiScreens/LoveCalcScreen";
 
 const BottomTab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -23,6 +29,7 @@ const ApiS = ()=>(
                 title: "API"
             }}
         />
+        <Stack.Screen name="Love Calculator" component={LoveCalcScreen}/>
     </Stack.Navigator>
 )
 
@@ -36,6 +43,11 @@ const ComponentS = ()=>(
             }}
         />
         <Stack.Screen name="Counter" component={CounterScreen}/>
+        <Stack.Screen name="Random Number" component={RandomNumScreen}/>
+        <Stack.Screen name="Rate" component={RateScreen}/>
+        <Stack.Screen name="Rectangle" component={RectangleScreen}/>
+        <Stack.Screen name="Slide" component={SlideScreen}/>
+        <Stack.Screen name="Timer" component={TimerScreen}/>
     </Stack.Navigator>
 )
 

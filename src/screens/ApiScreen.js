@@ -1,9 +1,12 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text,Button} from 'react-native';
 
-const ApiScreen = () => {
+const ApiScreen = ({navigation}) => {
     return <View>
-        <Text>Api SCreen</Text>
+        <Button
+            title="Love Calculator"
+            onPress={()=>navigation.navigate('Love Calculator')}
+        />
     </View>
 }
 

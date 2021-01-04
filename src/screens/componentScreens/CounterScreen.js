@@ -12,24 +12,26 @@ const CounterScreen = ()=>{
     return <View style={styles.contain}>
         <Text style={styles.display}>{num}</Text>
 
-        <View style={styles.valInc}>
-            <TouchableOpacity
-                onPress={()=>setSmallNum(smallNum>0?smallNum - 1:0)}
-            >
-                <AntDesign name="minussquareo" size={37}/>
-            </TouchableOpacity>
 
-            <Text style={styles.smallNum}>{smallNum}</Text>
-
-            <TouchableOpacity onPress={()=>setSmallNum(smallNum + 1)}>
-                <AntDesign name="plussquareo" size={37}/>
-            </TouchableOpacity>
-        </View>
 
         <View style={styles.btn}>
             <TouchableOpacity onPress={()=>setNum(num+smallNum)}>
                 <AntDesign name="caretup" size={77}/>
             </TouchableOpacity>
+
+            <View style={styles.valInc}>
+                <TouchableOpacity
+                    onPress={()=>setSmallNum(smallNum>0?smallNum - 1:0)}
+                >
+                    <AntDesign name="minussquareo" size={37}/>
+                </TouchableOpacity>
+
+                <Text style={styles.smallNum}>{smallNum}</Text>
+
+                <TouchableOpacity onPress={()=>setSmallNum(smallNum + 1)}>
+                    <AntDesign name="plussquareo" size={37}/>
+                </TouchableOpacity>
+            </View>
 
             <TouchableOpacity onPress={()=>setNum(num-smallNum)}>
                 <AntDesign name="caretdown" size={77}/>
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
         marginTop: SCREEN_HEIGHT/10,
     },
     valInc: {
-        marginTop: SCREEN_HEIGHT/5,
+
         flexDirection: 'row'
     },
     smallNum: {
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10
     },
     btn: {
-        marginTop: 10,
+        marginTop: SCREEN_HEIGHT/5,
         alignItems: 'center',
     }
 })

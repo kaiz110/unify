@@ -7,6 +7,10 @@ const ComponentScreen = ({navigation}) => {
             title="counter"
             onPress={()=>navigation.navigate('Counter')}
         />
+        <Button
+            title="Random Number"
+            onPress={()=>navigation.navigate('Random Number')}
+        />
     </View>
 }
 

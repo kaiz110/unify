@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import {UIManager} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -18,6 +19,13 @@ import LoveCalcScreen from "./src/screens/apiScreens/LoveCalcScreen";
 
 const BottomTab = createBottomTabNavigator()
 const Stack = createStackNavigator()
+
+// ui for layout animation on android
+if (Platform.OS === 'android') {
+    if (UIManager.setLayoutAnimationEnabledExperimental) {
+      UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
+  }
 
 //nested screens
 const ApiS = ()=>(

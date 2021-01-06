@@ -11,6 +11,10 @@ const ComponentScreen = ({navigation}) => {
             title="Random Number"
             onPress={()=>navigation.navigate('Random Number')}
         />
+        <Button
+            title="Rectangle"
+            onPress={()=>navigation.navigate('Rectangle')}
+        />
     </View>
 }
 

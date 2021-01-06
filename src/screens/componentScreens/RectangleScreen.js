@@ -1,61 +1,60 @@
-import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity,Dimensions} from 'react-native';
-import Slider from '@react-native-community/slider';
-import {FontAwesome} from '@expo/vector-icons';
+import React,{useReducer} from 'react';
+import {StyleSheet, View, Text, TouchableOpacity,Dimensions,Pressable} from 'react-native';
+import {MaterialCommunityIcons} from '@expo/vector-icons';
 
-const SCREEN_WIDTH = Dimensions.get('window').width
 const SCREEN_HEIGHT = Dimensions.get('window').height
+const SCREEN_WIDTH = Dimensions.get('window').width
+
+import Controller1 from '../../components/Controller1';
+
+const reducer = (state,action) => {
+    switch(action.type){
+        case 'hor':
+            return {...state,transX : state.transX + action.payload}
+        case 'ver':
+            return {...state,transY : state.transY + action.payload}
+        case 'fps':
+            return {...state,fps : action.payload}
+        default: 
+            return state
+    }
+}
 
 const RectangleScreen = ()=>{
-
+    const [state,dispatch] = useReducer(reducer,{fps: 1, transX: 0, transY: 0})
 
     return <View style={{flex: 1}}>
         <View style={styles.display}>
             <View
-                style={styles.rectangle}
-            />   
+                style={[styles.rectangle,{
+                    transform: [
+                        {translateX: state.transX},
+                        {translateY: state.transY}
+                    ]
+                }]}
+            > 
+                <MaterialCommunityIcons name="dog" size={54}/>
+            </View>   
         </View>
-        
-        <View style={styles.controller}>
-            <Slider
-                style={styles.slider}
-                minimumValue={0}
-                maximumValue={1}
-                minimumTrackTintColor="red"
-                maximumTrackTintColor="#000000"
-            />
 
-            <View style={styles.btn}>
-                <TouchableOpacity>
-                    <FontAwesome name="arrow-left" size={63}/>
-                </TouchableOpacity>
+        <Text style={{marginLeft: 10}}>{`FPS: ${state.fps}`}</Text>
+        <Text style={{marginLeft: 10}}>
+            {`Screen Width: ${SCREEN_WIDTH}, Screen Height: ${SCREEN_HEIGHT}`}
+        </Text>
 
-                <View style={styles.btnMid}>
-                    <TouchableOpacity
-                        
-                    >
-                        <FontAwesome name="arrow-up" size={63}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        
-                    >
-                        <FontAwesome name="arrow-down" size={63}/>
-                    </TouchableOpacity>
-                </View>
-
-                <TouchableOpacity>
-                    <FontAwesome name="arrow-right" size={63}/>
-                </TouchableOpacity>
-            </View>
-        </View>
+        <Controller1
+            state={state}
+            dispatch={dispatch}
+        />
     </View>
 }
+
+
 
 const styles = StyleSheet.create({
     //
     display: {
-        flex: 3,
+        height: SCREEN_HEIGHT/2,
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -64,32 +63,10 @@ const styles = StyleSheet.create({
         height: 100,
         width: 100,
         backgroundColor: 'red',
+        alignItems:'center',
+        justifyContent: 'center'
     },
-    // display flex 3 / controller flex 2
-    controller: {
-        borderTopWidth: 2,
-        flex: 2,
-        alignItems: 'center'
-    },
-    slider: {
-        width: SCREEN_WIDTH-45,
-        height: 50,
-        flex:1
-    },
-    // slider 1 / button group 4
-    btn: {
-        flexDirection: 'row',
-        borderWidth: 1,
-        paddingHorizontal: 15,
-        borderRadius: 7,
-        flex: 4,
-        alignItems: 'center'
-    },
-    btnMid: {
-        flexDirection: 'column',
-        height: SCREEN_HEIGHT*0.21,
-        justifyContent: 'space-between',
-    }
+    
 })
 
 export default RectangleScreen

@@ -9,11 +9,14 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
+    "@react-native-community/slider": "3.0.3",
     "@react-navigation/bottom-tabs": "^5.11.2",
+    "@react-navigation/material-bottom-tabs": "^5.3.10",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
     "axios": "^0.21.1",
     "expo": "~40.0.0",
+    "expo-linear-gradient": "~8.4.0",
     "expo-status-bar": "~1.0.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -23,9 +26,8 @@
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "~2.15.0",
-    "react-native-web": "~0.13.12",
-    "expo-linear-gradient": "~8.4.0",
-    "@react-native-community/slider": "3.0.3"
+    "react-native-scroll-into-view": "^1.0.3",
+    "react-native-web": "~0.13.12"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

@@ -1,61 +1,114 @@
-import React from 'react';
-import {StyleSheet, View, Text,ScrollView,Image,Button} from 'react-native';
+import React,{useState} from 'react';
+import {StyleSheet, View, Text,
+    ScrollView,Image,Button,FlatList,TouchableOpacity,Dimensions} from 'react-native';
 
 import {ImgSource1,ImgSource2} from '../../components/ImageSource';
 
-let _scrollviewDog
+const SCREEN_WIDTH = Dimensions.get('window').width
+let _flatlistDog
+
 
 const SlideScreen = ()=>{
-    return <ScrollView style={{flex: 1}}>
-        <View>
-            <ScrollView horizontal>
-                {ImgSource1.map(value=>(
-                    <Image 
-                        key={value.key} 
-                        style={{width: 150,height: 150}} 
-                        source={{uri: value.img}}/>
-                ))}
-            </ScrollView>
-        </View>
-        
-        <Text style={styles.text}>Dod</Text>
-        <View>    
-            <ScrollView 
-                horizontal 
-                ref={view => _scrollviewDog = view}
-                >
-                    {ImgSource2.map(value=>(
-                        <Image 
-                            key={value.key} 
-                            style={{width: 290,height: 350}} 
-                            source={{uri: value.img}}/>
-                    ))}
-            </ScrollView>
-        </View>
-        
-        <View>    
-            <ScrollView horizontal>
-                    {ImgSource2.map(value=>(
-                        <Image 
-                            key={value.key} 
-                            style={{width: 80,height: 80}} 
-                            source={{uri: value.img}}/>
-                    ))}
-            </ScrollView>
-        </View>
-        <Button
-            title="scroll to"
-            onPress={()=>{
-                _scrollviewDog.scrollTo({x: 290,y: 0,animated: true})
+    const [select,setSelect] = useState(0)
+
+    const SmallImage = ({item,index})=>(
+        <TouchableOpacity 
+            style={{
+                marginRight: 1,
+                borderRadius: 8,
+                borderColor:'#c0392b',
+                borderWidth: index==select ? 2 : 0     
             }}
-        />
+            onPress={()=>{
+                setSelect(index)   
+                scrollTo(index) 
+            }}
+        >
+            <Image 
+                style={{
+                    width: 80,
+                    height: 80,
+                    borderRadius: 5,
+                    opacity: index==select ? 1 : 0.6
+                }} 
+                source={{uri: item.img}}
+            />
+        </TouchableOpacity>
+    )
+
+    return <ScrollView style={styles.contain}>
+        <View>
+            <View style={styles.text}>
+                <Text style={{fontSize: 21}}>SlideShow 1</Text>   
+            </View>
+             
+            <FlatList
+                data={ImgSource1}
+                keyExtractor={data=> data.key}
+                horizontal
+                nestedScrollEnabled
+                renderItem={({item})=>(
+                    <Image 
+                        style={{height: 290,width: 260}} 
+                        source={{uri: item.img}}
+                    />
+                )}
+            />
+        </View>
+        
+        <View>
+            <View style={styles.text}>
+                <Text style={{fontSize: 21}}>SlideShow 2</Text>    
+            </View>
+                
+            <FlatList
+                data={ImgSource2}
+                keyExtractor={data=> data.key}
+                ref={view => _flatlistDog = view}
+                horizontal
+                nestedScrollEnabled
+                renderItem={({item})=>{
+                    return <Image style={{height: 380,width: 300}} source={{uri: item.img}}/>
+                }}
+            />
+        </View>
+        
+        <View>    
+            <FlatList
+                contentContainerStyle={{alignItems: 'center'}}
+                data={ImgSource2}
+                keyExtractor={data=> data.key}
+                horizontal
+                nestedScrollEnabled
+                showsHorizontalScrollIndicator
+                renderItem={({item,index})=>(
+                    <SmallImage 
+                        item={item} 
+                        index={index}
+                    />
+                )}
+            />
+        </View>
     </ScrollView>
 }
 
+function scrollTo(index){
+    _flatlistDog.scrollToIndex({animated: true,index})
+}
+
 const styles = StyleSheet.create({
+    contain: {
+        backgroundColor:'#fab1a0',
+        flex: 1
+    },
     text: {
-        fontSize: 24,
+        width: SCREEN_WIDTH - 50,
         margin: 10,
+        padding: 5,
+        borderRadius: 20,
+        alignItems: 'center',
+        alignSelf: 'center',
+        backgroundColor: '#81ecec'
     }
 })
 

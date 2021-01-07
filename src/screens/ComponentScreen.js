@@ -4,7 +4,7 @@ import {StyleSheet, View, Button} from 'react-native';
 const ComponentScreen = ({navigation}) => {
     return <View>
         <Button
-            title="counter"
+            title="Counter"
             onPress={()=>navigation.navigate('Counter')}
         />
         <Button
@@ -14,6 +14,14 @@ const ComponentScreen = ({navigation}) => {
         <Button
             title="Rectangle"
             onPress={()=>navigation.navigate('Rectangle')}
+        />
+        <Button
+            title="Slide"
+            onPress={()=>navigation.navigate('Slide')}
+        />
+        <Button
+            title="Timer"
+            onPress={()=>navigation.navigate('Timer')}
         />
     </View>
 }

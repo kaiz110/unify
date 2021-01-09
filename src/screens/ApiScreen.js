@@ -7,6 +7,10 @@ const ApiScreen = ({navigation}) => {
             title="Love Calculator"
             onPress={()=>navigation.navigate('Love Calculator')}
         />
+        <Button
+            title="Joke"
+            onPress={()=>navigation.navigate('Joke')}
+        />
     </View>
 }
 

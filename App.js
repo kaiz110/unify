@@ -17,6 +17,7 @@ import RectangleScreen from "./src/screens/componentScreens/RectangleScreen";
 import SlideScreen from "./src/screens/componentScreens/SlideScreen";
 import TimerScreen from "./src/screens/componentScreens/TimerScreen";
 import LoveCalcScreen from "./src/screens/apiScreens/LoveCalcScreen";
+import JokeScreen from './src/screens/apiScreens/JokeScreen';
 
 const BottomTab = createMaterialBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -39,6 +40,7 @@ const ApiS = ()=>(
             }}
         />
         <Stack.Screen name="Love Calculator" component={LoveCalcScreen}/>
+        <Stack.Screen name="Joke" component={JokeScreen}/>
     </Stack.Navigator>
 )
 

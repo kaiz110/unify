@@ -1,29 +1,44 @@
 import React from 'react';
-import {StyleSheet, View, Button} from 'react-native';
+import {StyleSheet, ScrollView, Button} from 'react-native';
+import {List,Divider} from 'react-native-paper';
 
 const ComponentScreen = ({navigation}) => {
-    return <View>
-        <Button
+    return <ScrollView>
+        <List.Item
             title="Counter"
+            left={props=> <List.Icon {...props} icon="counter"/>}
+            right={props => <List.Icon {...props} icon="chevron-right"/>}
             onPress={()=>navigation.navigate('Counter')}
         />
-        <Button
+        <Divider/>
+        <List.Item
             title="Random Number"
+            left={props=> <List.Icon {...props} icon="dice-5"/>}
+            right={props => <List.Icon {...props} icon="chevron-right"/>}
             onPress={()=>navigation.navigate('Random Number')}
         />
-        <Button
+        <Divider/>
+        <List.Item
             title="Rectangle"
+            left={props=> <List.Icon {...props} icon="rectangle-outline"/>}
+            right={props => <List.Icon {...props} icon="chevron-right"/>}
             onPress={()=>navigation.navigate('Rectangle')}
         />
-        <Button
+        <Divider/>
+        <List.Item
             title="Slide"
+            left={props=> <List.Icon {...props} icon="image-area"/>}
+            right={props => <List.Icon {...props} icon="chevron-right"/>}
             onPress={()=>navigation.navigate('Slide')}
         />
-        <Button
+        <Divider/>
+        <List.Item
             title="Timer"
+            left={props=> <List.Icon {...props} icon="timer-sand"/>}
+            right={props => <List.Icon {...props} icon="chevron-right"/>}
             onPress={()=>navigation.navigate('Timer')}
         />
-    </View>
+    </ScrollView>
 }
 
 const styles = StyleSheet.create({})

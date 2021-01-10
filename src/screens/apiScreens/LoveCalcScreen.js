@@ -44,7 +44,7 @@ const LoveCalcScreen = ()=>{
             <View style={styles.box}>
                 <LinearGradient
                     colors={["rgba(255, 166, 166,0.90)", "transparent"]} 
-                    style={{flex: 1,alignItems:'center'}}
+                    style={{flex: 1,alignItems:'center',borderRadius: 7}}
                 >
                 {res?
                 <View style={{alignItems: 'center'}}>

@@ -35,10 +35,10 @@ const JokeScreen = ()=>{
         }
     }
 
-    useEffect(()=>{
-        // 1 load
-        getJoke()
-    },[])
+    // useEffect(()=>{
+    //     // 1 load
+    //     getJoke()
+    // },[])
 
     return <View style={{flex: 1}}>
         {
@@ -51,7 +51,7 @@ const JokeScreen = ()=>{
                     <Button
                     loading={loading} 
                     onPress={()=>getJoke()}
-                    > More </Button>
+                    > Get more </Button>
                 )}
                 renderItem={({item})=>{
                     return <View style={styles.card}> 

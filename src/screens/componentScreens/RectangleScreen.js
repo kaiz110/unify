@@ -39,7 +39,7 @@ const RectangleScreen = ()=>{
 
         <Text style={{marginLeft: 10}}>{`FPS: ${state.fps}`}</Text>
         <Text style={{marginLeft: 10}}>
-            {`Screen Width: ${SCREEN_WIDTH}, Screen Height: ${SCREEN_HEIGHT}`}
+            {`Screen Width: ${SCREEN_WIDTH.toFixed(1)}, Screen Height: ${SCREEN_HEIGHT.toFixed(1)}`}
         </Text>
 
         <Controller1

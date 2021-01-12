@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import {StyleSheet, View, Text,
     ScrollView,Image,Button,FlatList,TouchableOpacity,Dimensions} from 'react-native';
 
-import {ImgSource1,ImgSource2} from '../../components/ImageSource';
+import {ImgSource3,ImgSource2} from '../../components/ImageSource';
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 let _flatlistDog
@@ -43,7 +43,7 @@ const SlideScreen = ()=>{
             </View>
              
             <FlatList
-                data={ImgSource1}
+                data={ImgSource3}
                 keyExtractor={data=> data.key}
                 horizontal
                 nestedScrollEnabled

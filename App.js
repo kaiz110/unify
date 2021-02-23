@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {UIManager} from 'react-native';
+import {UIManager,Platform} from 'react-native';
 import {Provider as PaperProvider,BottomNavigation} from 'react-native-paper';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -16,6 +16,7 @@ import RandomNumScreen from "./src/screens/componentScreens/RandomNumScreen";
 import RectangleScreen from "./src/screens/componentScreens/RectangleScreen";
 import SlideScreen from "./src/screens/componentScreens/SlideScreen";
 import TimerScreen from "./src/screens/componentScreens/TimerScreen";
+import TimeScreen from './src/screens/componentScreens/TimeScreen'
 import LoveCalcScreen from "./src/screens/apiScreens/LoveCalcScreen";
 import JokeScreen from './src/screens/apiScreens/JokeScreen';
 
@@ -58,6 +59,7 @@ const ComponentS = ()=>(
         <Stack.Screen name="Rectangle" component={RectangleScreen}/>
         <Stack.Screen name="Slide" component={SlideScreen}/>
         <Stack.Screen name="Timer" component={TimerScreen}/>
+        <Stack.Screen name="Time" component={TimeScreen}/>
     </Stack.Navigator>
 )
 

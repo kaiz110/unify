@@ -38,6 +38,13 @@ const ComponentScreen = ({navigation}) => {
             right={props => <List.Icon {...props} icon="chevron-right"/>}
             onPress={()=>navigation.navigate('Timer')}
         />
+        <Divider/>
+        <List.Item
+            title="Time"
+            left={props=> <List.Icon {...props} icon="timelapse"/>}
+            right={props => <List.Icon {...props} icon="chevron-right"/>}
+            onPress={()=>navigation.navigate('Time')}
+        />
     </ScrollView>
 }
 

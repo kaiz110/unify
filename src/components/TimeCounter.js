@@ -39,7 +39,6 @@ const TimeCounter = ({time,run,init})=>{
     },[time])
 
     useEffect(()=>{
-        console.log('hey')
         if(run){
             dispatch({type:'RESET',payload: init})
         }
@@ -67,16 +66,34 @@ const TimeCounter = ({time,run,init})=>{
     }
 
 
-    return <View>
-        <Text>YEAR: {state[5]}</Text>
-        <Text>MONTH: {state[4]}</Text>
-        <Text>DAY: {state[3]}</Text>
-        <Text>HOUR: {state[2]}</Text>
-        <Text>MINUTE: {state[1]}</Text>
-        <Text>SECOND: {state[0]}</Text>
+    return <View style={styles.contain}>
+        <Text style={styles.text}>YEAR: {state[5]}</Text>
+        <Text style={styles.text}>MONTH: {state[4]}</Text>
+        <Text style={styles.text}>DAY: {state[3]}</Text>
+        <Text style={styles.text}>HOUR: {state[2]}</Text>
+        <Text style={styles.text}>MINUTE: {state[1]}</Text>
+        <Text style={styles.text}>SECOND: {state[0]}</Text>
     </View>
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    contain: {
+        margin: 10,
+        marginHorizontal: 25,
+        borderColor: 'grey',
+        padding: 15,
+        borderRadius: 7,
+        borderWidth: 1,
+        alignItems: 'center'
+    },
+    text: {
+        fontSize: 18,
+        color: 'white',
+        padding: 10,
+        marginBottom: 10,
+        borderRadius: 7,
+        backgroundColor: 'green',
+    }
+})
 
 export default TimeCounter

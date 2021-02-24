@@ -15,7 +15,8 @@ const Time = ()=>{
     const second = Math.floor(secS) % 60
     const minute = Math.floor(secS/60) % 60
     const hour = Math.floor(secS/3600) % 24
-    const day = Math.floor(Math.floor(dayS) % 30.445)
+    //const day = Math.floor(Math.floor(dayS) % 30.445)
+    const day = (Math.floor(dayS) % 365) % 30
     const month = Math.floor(Math.floor(dayS) % 365 / 30) 
     const year = Math.floor(dayS/365)
 
@@ -28,15 +29,15 @@ const Time = ()=>{
         
     },)
 
-    return <View>
-        <Text>Date of birth:</Text>
+    return <View style={{alignItems: 'center'}}>
+        <Text style={styles.text}>Date of birth:</Text>
         <DateTimePicker
             value={time}
             onChange={setTime}
         />
         {!calc 
         ?<Button
-            title="calculator"
+            title="calculate"
             onPress={()=>setCalc(true)}
         />
         :<Button
@@ -59,6 +60,11 @@ const Time = ()=>{
     </View>
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    text: {
+        fontSize: 18,
+        margin: 10,
+    }
+})
 
 export default Time
